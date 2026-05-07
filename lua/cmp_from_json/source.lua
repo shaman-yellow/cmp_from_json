@@ -8,6 +8,21 @@ function source.new()
   }, { __index = source })
 end
 
+function source:trigger()
+  local cmp = require("cmp")
+  cmp.complete({
+    config = {
+      sources = {
+        { name = 'cmp_from_json' }
+      }
+    }
+  })
+end
+
+function source:get_trigger_characters()
+  return { " " }
+end
+
 function source:set_items(items)
   self.items = items or {}
 end
